@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const SYSTEM_PROMPT = {
   role: 'system',
-  content: 'You are a helpful assistant. Always respond in the language the user is speaking.',
+  content: 'あなたは親切なAIアシスタントです。ユーザーが話している言語で応答してください。',
 };
 
 app.post('/api/chat', async (req, res) => {

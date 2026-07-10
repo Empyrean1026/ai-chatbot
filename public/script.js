@@ -162,7 +162,7 @@ function appendMessage(role, content, save = true) {
   div.innerHTML = `
     <div class="avatar ${role}">${avatarLabel}</div>
     <div class="msg-body">
-      <div class="msg-role">${role === 'user' ? '你' : 'AI'}</div>
+      <div class="msg-role">${role === 'user' ? 'あなた' : 'AI'}</div>
       <div class="msg-content">${renderContent(content)}</div>
     </div>
   `;
@@ -291,7 +291,7 @@ async function handleSubmit(e) {
     if (streamContent) {
       updateAiMessage('', true);
     } else {
-      showError('网络连接失败，请检查后端服务是否启动');
+      showError('ネットワーク接続に失敗しました。サーバーが起動しているか確認してください');
     }
   } finally {
     isStreaming = false;
@@ -308,7 +308,7 @@ function showError(msg) {
   div.innerHTML = `
     <div class="avatar assistant">AI</div>
     <div class="msg-body">
-      <div class="msg-role">错误</div>
+      <div class="msg-role">エラー</div>
       <div class="msg-content"><p>${escapeHtml(msg)}</p></div>
     </div>
   `;
@@ -320,7 +320,7 @@ function showError(msg) {
 function clearChat() {
   if (isStreaming) return;
   if (messages.length === 0) return;
-  if (!confirm('确定要清空所有聊天记录吗？')) return;
+  if (!confirm('チャット履歴をすべて削除しますか？')) return;
 
   messages = [];
   localStorage.removeItem(HISTORY_KEY);
@@ -336,12 +336,12 @@ function clearChat() {
   welcome.className = 'welcome';
   welcome.innerHTML = `
     <div class="welcome-icon">🤖</div>
-    <h2>有什么我可以帮你的？</h2>
-    <p class="welcome-hint">输入问题开始对话，支持 Markdown 和代码高亮</p>
+    <h2>どのようなご用件ですか？</h2>
+    <p class="welcome-hint">質問を入力してください。Markdownとコードハイライトに対応しています</p>
   `;
   chatBox.appendChild(welcome);
 
-  showToast('聊天记录已清空');
+  showToast('チャット履歴を削除しました');
 }
 
 /* ===== Toast ===== */
